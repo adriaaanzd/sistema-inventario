@@ -1,85 +1,108 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Inventario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Sistema de Inventario</h1>
-        <p>Gestión de productos y control de stock</p>
+    <header class="barra">
+        <h1>Inventario</h1>
     </header>
 
     <main>
-        <section class="resumen">
-            <div class="tarjeta">
-                <h3>Total de productos</h3>
-                <h2 id="totalProductos">0</h2>
+        <dl class="resumen">
+            <div>
+                <dt>Productos</dt>
+                <dd id="totalProductos">0</dd>
             </div>
-
-            <div class="tarjeta">
-                <h3>Stock bajo</h3>
-                <h2 id="stockBajo">0</h2>
+            <div>
+                <dt>Con stock bajo</dt>
+                <dd id="stockBajo">0</dd>
             </div>
-
-            <div class="tarjeta">
-                <h3>Valor del inventario</h3>
-                <h2 id="valorInventario">S/ 0.00</h2>
+            <div>
+                <dt>Valor del inventario</dt>
+                <dd id="valorInventario">S/ 0.00</dd>
             </div>
-        </section>
+        </dl>
 
-        <section class="panel">
-            <h2>Registrar producto</h2>
+        <div class="contenido">
+            <section class="lista" aria-labelledby="tituloLista">
+                <div class="barra-lista">
+                    <h2 id="tituloLista">Productos</h2>
+                    <input type="search" id="buscar"
+                           placeholder="Buscar por nombre"
+                           aria-label="Buscar producto">
+                </div>
 
-            <form id="formProducto">
-                <input type="text" id="nombre"
-                       placeholder="Nombre del producto" required>
+                <div class="tabla-contenedor">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Categoría</th>
+                                <th class="num">Precio</th>
+                                <th class="num">Cantidad</th>
+                                <th>Estado</th>
+                                <th class="num">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaProductos"></tbody>
+                    </table>
+                </div>
+            </section>
 
-                <select id="categoria" required>
-                    <option value="">Seleccionar categoría</option>
-                    <option value="Tecnología">Tecnología</option>
-                    <option value="Oficina">Oficina</option>
-                    <option value="Otros">Otros</option>
-                </select>
+            <aside class="panel-form">
+                <h2 id="tituloForm">Nuevo producto</h2>
 
-                <input type="number" id="precio"
-                       placeholder="Precio" min="0" step="0.01" required>
+                <form id="formProducto">
+                    <div class="campo">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" required>
+                    </div>
 
-                <input type="number" id="cantidad"
-                       placeholder="Cantidad" min="0" step="1" required>
+                    <div class="campo">
+                        <label for="categoria">Categoría</label>
+                        <select id="categoria" required>
+                            <option value="">Seleccionar</option>
+                            <option value="Tecnología">Tecnología</option>
+                            <option value="Oficina">Oficina</option>
+                            <option value="Otros">Otros</option>
+                        </select>
+                    </div>
 
-                <button type="submit" id="btnGuardar">
-                    Guardar producto
-                </button>
-            </form>
-        </section>
+                    <div class="fila">
+                        <div class="campo">
+                            <label for="precio">Precio (S/)</label>
+                            <input type="number" id="precio"
+                                   min="0" step="0.01" inputmode="decimal" required>
+                        </div>
 
-        <section class="panel">
-            <h2>Lista de productos</h2>
+                        <div class="campo">
+                            <label for="cantidad">Cantidad</label>
+                            <input type="number" id="cantidad"
+                                   min="0" step="1" inputmode="numeric" required>
+                        </div>
+                    </div>
 
-            <input type="text" id="buscar"
-                   placeholder="Buscar producto...">
+                    <p id="mensaje" class="mensaje" role="alert"></p>
 
-            <div class="tabla-contenedor">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Producto</th>
-                            <th>Categoría</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tablaProductos"></tbody>
-                </table>
-            </div>
-        </section>
+                    <div class="acciones-form">
+                        <button type="submit" id="btnGuardar" class="btn-primario">
+                            Guardar producto
+                        </button>
+                        <button type="button" id="btnCancelar" class="btn-secundario" hidden>
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+            </aside>
+        </div>
     </main>
 
     <script src="script.js"></script>

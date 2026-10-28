@@ -1,40 +1,43 @@
+# Sistema de Inventario
 
-# Sistema de Inventario Web
+Aplicación web para registrar productos y controlar su stock desde el navegador, sin servidor ni instalación. Está pensada para un negocio pequeño que necesita saber qué tiene, cuánto vale y qué se está acabando.
 
-Aplicación web para registrar y administrar productos,
-desarrollada como proyecto de práctica.
+![Vista del sistema de inventario](docs/inventario.png)
+
+## Qué permite hacer
+- Registrar, editar y eliminar productos (nombre, categoría, precio y cantidad).
+- Buscar por nombre mientras se escribe.
+- Ver de un vistazo el total de productos, cuántos tienen stock bajo y el valor del inventario en soles.
+- Identificar el stock bajo en la tabla: se consideran productos con 3 unidades o menos.
+- Cancelar una edición sin perder los datos guardados.
+- Conservar los datos al cerrar la página.
 
 ## Tecnologías
-- HTML5
-- CSS3
-- JavaScript
-- LocalStorage
+- HTML5, CSS3 y JavaScript sin frameworks ni dependencias.
+- `localStorage` para guardar los datos en el navegador.
+- Tipografía IBM Plex Sans (Google Fonts), con la fuente del sistema como respaldo.
 
-## Funcionalidades
-- Registro de productos
-- Edición y eliminación
-- Búsqueda por nombre
-- Control de stock
-- Indicadores de inventario
-- Persistencia local de datos
+## Cómo ejecutarlo
+1. Clonar o descargar el repositorio.
+2. Abrir `index.html` en un navegador.
+3. Registrar productos desde el formulario lateral.
 
-## Ejecución
-1. Descargar o clonar el repositorio.
-2. Abrir index.html en un navegador.
-3. Registrar productos desde el formulario.
+## Estructura
+- `index.html`: estructura de la página.
+- `style.css`: estilos y diseño adaptable a móvil.
+- `script.js`: lógica, validación y almacenamiento.
 
-## Arquitectura
-- index.html: estructura visual
-- style.css: presentación
-- script.js: lógica y almacenamiento
-
-## Mejoras futuras
-- Backend con ASP.NET Core
-- Base de datos SQL Server
-- API REST
-- Autenticación de usuarios
+## Decisiones de diseño
+- La tabla es el centro de la pantalla. El formulario queda a un lado y no compite con ella.
+- Los colores de alerta solo aparecen cuando hay stock bajo.
+- Los formularios tienen etiquetas visibles y foco de teclado claro.
+- El contenido se escribe con `textContent`, no con `innerHTML`, para evitar inyección de HTML.
 
 ## Limitaciones
-Los datos se guardan en el navegador mediante
-localStorage. No existe un servidor ni una base
-de datos compartida.
+Los datos viven en el navegador (`localStorage`). No hay servidor, base de datos compartida ni usuarios, así que cada navegador tiene su propio inventario.
+
+## Mejoras futuras
+- API REST con ASP.NET Core.
+- Base de datos SQL Server.
+- Autenticación de usuarios.
+- Orden por columnas y filtro por categoría.
