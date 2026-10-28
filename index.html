@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Inventario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Sistema de Inventario</h1>
+        <p>Gestión de productos y control de stock</p>
+    </header>
+
+    <main>
+        <section class="resumen">
+            <div class="tarjeta">
+                <h3>Total de productos</h3>
+                <h2 id="totalProductos">0</h2>
+            </div>
+
+            <div class="tarjeta">
+                <h3>Stock bajo</h3>
+                <h2 id="stockBajo">0</h2>
+            </div>
+
+            <div class="tarjeta">
+                <h3>Valor del inventario</h3>
+                <h2 id="valorInventario">S/ 0.00</h2>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Registrar producto</h2>
+
+            <form id="formProducto">
+                <input type="text" id="nombre"
+                       placeholder="Nombre del producto" required>
+
+                <select id="categoria" required>
+                    <option value="">Seleccionar categoría</option>
+                    <option value="Tecnología">Tecnología</option>
+                    <option value="Oficina">Oficina</option>
+                    <option value="Otros">Otros</option>
+                </select>
+
+                <input type="number" id="precio"
+                       placeholder="Precio" min="0" step="0.01" required>
+
+                <input type="number" id="cantidad"
+                       placeholder="Cantidad" min="0" step="1" required>
+
+                <button type="submit" id="btnGuardar">
+                    Guardar producto
+                </button>
+            </form>
+        </section>
+
+        <section class="panel">
+            <h2>Lista de productos</h2>
+
+            <input type="text" id="buscar"
+                   placeholder="Buscar producto...">
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaProductos"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
