@@ -2,7 +2,7 @@
 
 Aplicación web para registrar productos y controlar su stock desde el navegador, sin servidor ni instalación. Está pensada para un negocio pequeño que necesita saber qué tiene, cuánto vale y qué se está acabando.
 
-![Vista del sistema de inventario](docs/inventario.png)
+![Vista del sistema de inventario](docs/Interfaz_v1.png)
 
 ## Qué permite hacer
 - Registrar, editar y eliminar productos (nombre, categoría, precio y cantidad).
